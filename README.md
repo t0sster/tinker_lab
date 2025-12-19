@@ -1,1 +1,1 @@
-# tinker_lab
+# Isaac Lab environment for Tinker project
