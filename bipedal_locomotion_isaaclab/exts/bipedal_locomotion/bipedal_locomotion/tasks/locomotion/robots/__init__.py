@@ -5,10 +5,27 @@ from bipedal_locomotion.tasks.locomotion.agents.rsl_rl_ppo_mlp_cfg import PFFlat
 
 from . import pointfoot_env_cfg, wheelfoot_env_cfg
 
+from . import tinker_env_cfg
+from bipedal_locomotion.tasks.locomotion.agents.rsl_rl_ppo_cfg import TinkerPPORunnerCfg
+
 ##
 # Create PPO runners for RSL-RL
 ##
 
+##
+# Runners for Tinker
+tk_blind_flat_runner_cfg = TinkerPPORunnerCfg()
+tk_blind_flat_runner_cfg.experiment_name = "tk_blind_flat"
+
+# pf_blind_rough_runner_cfg = TinkerPPORunnerCfg()
+# pf_blind_rough_runner_cfg.experiment_name = "tk_blind_rough"
+
+# pf_blind_stairs_runner_cfg = TinkerPPORunnerCfg()
+# pf_blind_stairs_runner_cfg.experiment_name = "tk_blind_stairs"
+##
+
+##
+# Previous runners:
 pf_blind_flat_runner_cfg = PointFootPPORunnerCfg()
 pf_blind_flat_runner_cfg.experiment_name = "pf_blind_flat"
 
@@ -50,12 +67,36 @@ wf_mlp_rough_runner_cfg.experiment_name = "wf_mlp_rough"
 
 wf_stair_runner_cfg = WFStairPPORunnerMlpCfg()
 wf_stair_runner_cfg.experiment_name = "wf_mlp_stair"
-
+##
 
 
 ##
 # Register Gym environments
 ##
+
+############################
+# TK Blind Flat Environment
+############################
+
+gym.register(
+    id="Isaac-TK-Blind-Flat-v0",
+    entry_point="isaaclab.envs:ManagerBasedRLEnv",
+    disable_env_checker=True,
+    kwargs={
+        "env_cfg_entry_point": tinker_env_cfg.TKBlindFlatEnvCfg,
+        "rsl_rl_cfg_entry_point": tk_blind_flat_runner_cfg,
+    },
+)
+
+gym.register(
+    id="Isaac-TK-Blind-Flat-Play-v0",
+    entry_point="isaaclab.envs:ManagerBasedRLEnv",
+    disable_env_checker=True,
+    kwargs={
+        "env_cfg_entry_point": tinker_env_cfg.TKBlindFlatEnvCfg_PLAY,
+        "rsl_rl_cfg_entry_point": tk_blind_flat_runner_cfg,
+    },
+)
 
 ############################
 # PF Blind Flat Environment
