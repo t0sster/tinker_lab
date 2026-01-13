@@ -35,12 +35,13 @@ import torch
 
 from isaaclab.envs import ManagerBasedRLEnvCfg
 from isaaclab_tasks.utils import get_checkpoint_path, parse_env_cfg
-from isaaclab_tasks.utils.wrappers.rsl_rl import RslRlOnPolicyRunnerCfg, RslRlVecEnvWrapper, export_policy_as_onnx
+# from isaaclab_tasks.utils.wrappers.rsl_rl import RslRlOnPolicyRunnerCfg, RslRlVecEnvWrapper, export_policy_as_onnx
+from isaaclab_rl.rsl_rl import RslRlVecEnvWrapper, export_policy_as_onnx
 
 # Import extensions to set up environment tasks
 import bipedal_locomotion  # noqa: F401
 from bipedal_locomotion.utils.wrappers.rsl_rl import RslRlOnPolicyRunnerMlpCfg, export_mlp_encoder_as_onnx
-from rsl_rl.runners import OnPolicyRunner, OnPolicyRunnerMlp
+from rsl_rl.runners import OnPolicyRunner#, OnPolicyRunnerMlp
 
 
 def main():
@@ -78,7 +79,7 @@ def main():
 
     # export policy to onnx
     export_model_dir = os.path.join(os.path.dirname(resume_path), "exported")
-    export_policy_as_onnx(ppo_runner.alg.actor_critic, export_model_dir, filename="policy.onnx")
+    export_policy_as_onnx(ppo_runner.alg.policy, export_model_dir, filename="policy.onnx")
     if agent_cfg.runner_type =="OnPolicyRunnerMlp":
         export_mlp_encoder_as_onnx(
             # ppo_runner.obs_normalizer.mean.shape[0],
@@ -90,20 +91,22 @@ def main():
             filename="encoder.onnx",
         )
     # reset environment
-    obs, obs_dict = env.get_observations()
-    critic_obs = obs_dict["observations"]["critic"]
+    obs_dict = env.get_observations()
+    obs = obs_dict["policy"]
+
+    critic_obs = obs_dict["critic"]
     # simulate environment
     while simulation_app.is_running():
         # run everything in inference mode
         with torch.inference_mode():
             # agent stepping
             if agent_cfg.runner_type == "OnPolicyRunner":
-                actions = policy(obs)
+                actions = policy(obs_dict)
             elif agent_cfg.runner_type == "OnPolicyRunnerMlp":
-                actions = policy(obs, critic_obs)
+                actions = policy(obs_dict, critic_obs)
             # env stepping
             obs, _, _, infos = env.step(actions)
-            critic_obs = infos["observations"]["critic"]
+            # critic_obs = infos["observations"]["critic"]
 
     # close the simulator
     env.close()

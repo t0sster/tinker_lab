@@ -15,12 +15,18 @@
     - after the installation make sure that you use *bipedal_locomotion* project that was previously adapted
             for a new versions of IsaacSim and all `omni.isaac.lab...` python imports is being changed to `isaaclab...`, etc.
 
-## Launch
+## Launch training
 
 ```bash
-python scripts/rsl_rl/train.py --task=Isaac-PF-Blind-Flat-v0 --num_envs=8
+python scripts/rsl_rl/train.py --task=Isaac-TK-Blind-Flat-v0 --num_envs=8
 ```
 
 ```bash
-python scripts/rsl_rl/train.py --task=Isaac-PF-Blind-Flat-v0 --num_envs=64 --max_iterations=100
+python scripts/rsl_rl/train.py --task=Isaac-TK-Blind-Flat-v0 --num_envs=64 --max_iterations=100
+```
+
+## Play trained policy
+
+```bash
+python scripts/rsl_rl/play.py --task=Isaac-TK-Blind-Flat-Play-v0 --checkpoint_path=path/to/checkpoint
 ```
