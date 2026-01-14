@@ -209,4 +209,7 @@ __marimo__/
 
 ### ---///---///---///---///--- ###
 # Other
+IsaacSim/
 IsaacLab/
+IsaacSim-ros_workspaces/
+# bipedal_locomotion_isaaclab/
