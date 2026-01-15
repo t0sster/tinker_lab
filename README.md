@@ -28,5 +28,5 @@ python scripts/rsl_rl/train.py --task=Isaac-TK-Blind-Flat-v0 --num_envs=64 --max
 ## Play trained policy
 
 ```bash
-python scripts/rsl_rl/play.py --task=Isaac-TK-Blind-Flat-Play-v0 --checkpoint_path=path/to/checkpoint
+python scripts/rsl_rl/play_TK.py --task=Isaac-TK-Blind-Flat-Play-v0 --num_envs=1 --checkpoint_path=path/to/checkpoint
 ```

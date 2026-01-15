@@ -300,7 +300,7 @@ class EventsCfg:
         func=mdp.reset_joints_by_scale,
         mode="reset",
         params={
-            "position_range": (-0.5, 0.5),
+            "position_range": (-0.1, 0.1),
             "velocity_range": (0.0, 0.0),
         },
         is_global_time=False,
@@ -367,7 +367,7 @@ class RewardsCfg:
     pen_base_height = RewTerm(
         func=mdp.base_com_height,
         params={
-            "target_height": 0.65,
+            "target_height": 0.36,
         },
         weight=-1.0,
     )

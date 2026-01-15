@@ -15,7 +15,7 @@ TK_CFG = ArticulationCfg(
         usd_dir=usd_dir,
         usd_file_name="tinker.usd",
         scale=(1.0, 1.0, 1.0),
-        fix_base=True,
+        fix_base=False,
 
         rigid_props=sim_utils.RigidBodyPropertiesCfg(
             rigid_body_enabled=True,
@@ -46,7 +46,7 @@ TK_CFG = ArticulationCfg(
     ),
 
     init_state=ArticulationCfg.InitialStateCfg(
-        pos=(0.0, 0.0, 0.33),
+        pos=(0.0, 0.0, 0.4),
         joint_pos={
             "J_L0":   0.0,
             "J_L1":  0.08,
