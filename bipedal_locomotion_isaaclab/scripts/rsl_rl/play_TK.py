@@ -52,7 +52,7 @@ def main():
     )
     agent_cfg: RslRlOnPolicyRunnerMlpCfg = cli_args.parse_rsl_rl_cfg(args_cli.task, args_cli)
     
-    env_cfg.terminations.base_contact = None
+    # env_cfg.terminations.base_contact = None
 
     # create isaac environment
     env = gym.make(args_cli.task, cfg=env_cfg)
@@ -105,7 +105,7 @@ def main():
             if agent_cfg.runner_type == "OnPolicyRunner":
                 actions = policy(obs_dict)
             elif agent_cfg.runner_type == "OnPolicyRunnerMlp":
-                actions = policy(obs_dict, critic_obs)
+                actions = policy(obs, critic_obs)
             # env stepping
             obs, _, _, infos = env.step(actions)
             # critic_obs = infos["observations"]["critic"]
