@@ -94,7 +94,7 @@
     name="J_L0"
     type="revolute">
     <origin
-      xyz="0.0025357 0.053301 0.056145"
+      xyz="-0.002787 0.053542 0.054381"
       rpy="0 0 0" />
     <parent
       link="base_link" />
@@ -103,8 +103,8 @@
     <axis
       xyz="0 0 1" />
     <limit
-      lower="-0.3"
-      upper="0.3"
+      lower="-0.7"
+      upper="0.7"
       effort="12"
       velocity="20" />
   </joint>
@@ -152,7 +152,7 @@
     name="J_L1"
     type="revolute">
     <origin
-      xyz="-0.010958 0 -0.054965"
+      xyz="0.016958 0 -0.053917"
       rpy="0 0 0" />
     <parent
       link="L0_Link" />
@@ -161,8 +161,8 @@
     <axis
       xyz="-1 0 0" />
     <limit
-      lower="-0.2"
-      upper="0.2"
+      lower="-0.38"
+      upper="0.46"
       effort="20"
       velocity="20" />
   </joint>
@@ -210,7 +210,7 @@
     name="J_L2"
     type="revolute">
     <origin
-      xyz="0.010958 0.073699 -0.014313"
+      xyz="-0.012958 0.059001 -0.014313"
       rpy="0 0 0" />
     <parent
       link="L1_Link" />
@@ -219,7 +219,7 @@
     <axis
       xyz="0 1 0" />
     <limit
-      lower="-0.57"
+      lower="-1.57"
       upper="1.57"
       effort="20"
       velocity="20" />
@@ -278,7 +278,7 @@
       xyz="0 1 0" />
     <limit
       lower="-2.35"
-      upper="0.05"
+      upper="0.0"
       effort="20"
       velocity="20" />
   </joint>
@@ -326,7 +326,7 @@
     name="J_L4_ankle"
     type="revolute">
     <origin
-      xyz="0 0 -0.14149"
+      xyz="0 0.025 -0.14049"
       rpy="0 0 0" />
     <parent
       link="L3_Link" />
@@ -335,8 +335,8 @@
     <axis
       xyz="0 -1 0" />
     <limit
-      lower="-0.6"
-      upper="0.7"
+      lower="-1.2"
+      upper="1.2"
       effort="12"
       velocity="20" />
   </joint>
@@ -384,7 +384,7 @@
     name="J_R0"
     type="revolute">
     <origin
-      xyz="0.0025357 -0.053425 0.056145"
+      xyz="-0.002787 -0.053184 0.054381"
       rpy="0 0 0" />
     <parent
       link="base_link" />
@@ -393,8 +393,8 @@
     <axis
       xyz="0 0 1" />
     <limit
-      lower="-0.3"
-      upper="0.3"
+      lower="-0.7"
+      upper="0.7"
       effort="12"
       velocity="20" />
   </joint>
@@ -442,7 +442,7 @@
     name="J_R1"
     type="revolute">
     <origin
-      xyz="-0.010958 0 -0.054965"
+      xyz="0.016958 0 -0.053917"
       rpy="0 0 0" />
     <parent
       link="R0_Link" />
@@ -451,8 +451,8 @@
     <axis
       xyz="-1 0 0" />
     <limit
-      lower="-0.2"
-      upper="0.2"
+      lower="-0.38"
+      upper="0.47"
       effort="20"
       velocity="20" />
   </joint>
@@ -500,7 +500,7 @@
     name="J_R2"
     type="revolute">
     <origin
-      xyz="0.010958 -0.073575 -0.014313"
+      xyz="-0.012958 -0.059 -0.014313"
       rpy="0 0 0" />
     <parent
       link="R1_Link" />
@@ -509,7 +509,7 @@
     <axis
       xyz="0 -1 0" />
     <limit
-      lower="-0.57"
+      lower="-1.57"
       upper="1.57"
       effort="20"
       velocity="20" />
@@ -567,7 +567,7 @@
     <axis
       xyz="0 -1 0" />
     <limit
-      lower="-0.05"
+      lower="0"
       upper="2.35"
       effort="20"
       velocity="20" />
@@ -616,7 +616,7 @@
     name="J_R4_ankle"
     type="revolute">
     <origin
-      xyz="0 0 -0.14149"
+      xyz="0 -0.025 -0.14049"
       rpy="0 0 0" />
     <parent
       link="R3_Link" />
@@ -625,8 +625,8 @@
     <axis
       xyz="0 1 0" />
     <limit
-      lower="-0.7"
-      upper="0.6"
+      lower="-1.2"
+      upper="1.2"
       effort="12"
       velocity="20" />
   </joint>
