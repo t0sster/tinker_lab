@@ -93,7 +93,7 @@ def main():
             filename="encoder.onnx",
         )
     # reset environment
-    obs_dict = env.get_observations()
+    '''obs_dict = env.get_observations()
     obs = obs_dict["policy"]
 
     critic_obs = obs_dict["critic"]
@@ -107,8 +107,19 @@ def main():
             elif agent_cfg.runner_type == "OnPolicyRunnerMlp":
                 actions = policy(obs, critic_obs)
             # env stepping
-            obs, _, _, infos = env.step(actions)
-            # critic_obs = infos["observations"]["critic"]
+            obs_dict, _, _, infos = env.step(actions)
+            # critic_obs = infos["observations"]["critic"]'''
+    
+    obs_dict = env.get_observations()
+
+    while simulation_app.is_running():
+        with torch.inference_mode():
+            if agent_cfg.runner_type == "OnPolicyRunner":
+                actions = policy(obs_dict)
+            elif agent_cfg.runner_type == "OnPolicyRunnerMlp":
+                actions = policy(obs_dict["policy"], obs_dict["critic"])
+
+            obs_dict, _, _, infos = env.step(actions)
 
     # close the simulator
     env.close()

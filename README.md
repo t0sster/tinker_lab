@@ -22,7 +22,11 @@ python scripts/rsl_rl/train_TK.py --task=Isaac-TK-Blind-Flat-v0 --num_envs=8
 ```
 
 ```bash
-python scripts/rsl_rl/train_TK.py --task=Isaac-TK-Blind-Flat-v0 --num_envs=64 --max_iterations=100
+python scripts/rsl_rl/train_TK.py --task=Isaac-TK-Blind-Flat-v0 --num_envs=2048 --max_iterations=20000
+```
+
+```bash
+python scripts/rsl_rl/train_TK.py --task=Isaac-TK-Blind-Flat-v0 --num_envs=512 --max_iterations=30000 --checkpoint_path=/logs/rsl_rl/tk_blind_flat/
 ```
 
 ## Play trained policy
@@ -31,7 +35,7 @@ python scripts/rsl_rl/train_TK.py --task=Isaac-TK-Blind-Flat-v0 --num_envs=64 --
 python scripts/rsl_rl/play_TK.py --task=Isaac-TK-Blind-Flat-Play-v0 --num_envs=1 --checkpoint_path=path/to/checkpoint
 ```
 
-path:
+example path:
 ```bash
-~/BE2R/tinker_lab/bipedal_locomotion_isaaclab/logs/rsl_rl/tk_blind_flat/2026-02-23_01-53-56/model_19000.pt
+/logs/rsl_rl/tk_blind_flat/2026-02-23_01-53-56/model_19000.pt
 ```

@@ -14,6 +14,7 @@ TK_CFG = ArticulationCfg(
         asset_path=urdf_path,
         usd_dir=usd_dir,
         usd_file_name="tinker.usd",
+        # force_usd_conversion=True,
         scale=(1.0, 1.0, 1.0),
         fix_base=False,
 
